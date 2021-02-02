@@ -40,3 +40,4 @@ for submission in subreddit.hot(limit = post_limit):
     ticker_total = ticker_total + ticker_count
 
 print(search_term, "was mentioned a total of", ticker_total, "times in the current top", post_limit ,"r/",enter_sub, "post comments.")
+#test
