@@ -25,7 +25,8 @@ ticker_total = 0
 post_number = 1
 for submission in subreddit.hot(limit = post_limit):
     url = submission.url
-    print("\nReading", enter_sub, "post #",post_number,": ", url)
+    url_title = submission.title
+    print("\nReading r/", enter_sub, "post #",post_number,": ", url_title,"\nURL:", url, )
     post_number = post_number + 1
 
     ticker_count = 0
@@ -36,8 +37,7 @@ for submission in subreddit.hot(limit = post_limit):
         if search == True:
             ticker_count = ticker_count + 1
 
-    print(search_term, "was mentioned: ", ticker_count, " times \n")
+    print("'",search_term,"'", "was mentioned: ", ticker_count, " times \n")
     ticker_total = ticker_total + ticker_count
 
 print(search_term, "was mentioned a total of", ticker_total, "times in the current top", post_limit ,"r/",enter_sub, "post comments.")
-#test
