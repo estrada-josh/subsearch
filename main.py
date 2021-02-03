@@ -23,21 +23,24 @@ subreddit = reddit.subreddit(enter_sub)
 
 ticker_total = 0
 post_number = 1
-for submission in subreddit.hot(limit = post_limit):
-    url = submission.url
-    url_title = submission.title
-    print("\nReading r/", enter_sub, "post #",post_number,": ", url_title,"\nURL:", url, )
-    post_number = post_number + 1
+try:
+    for submission in subreddit.hot(limit = post_limit):
+        url = submission.url
+        url_title = submission.title
+        print("\nReading r/", enter_sub, "post #",post_number,": ", url_title,"\nURL:", url, )
+        post_number = post_number + 1
 
-    ticker_count = 0
-    submission.comments.replace_more(limit=0)
-    for topcomments in submission.comments.list():
-        topcomments = topcomments.body #string
-        search = len(re.findall(search_term, topcomments))
-        if search == True:
-            ticker_count = ticker_count + 1
+        ticker_count = 0
+        submission.comments.replace_more(limit=0)
+        for topcomments in submission.comments.list():
+            topcomments = topcomments.body #string
+            search = len(re.findall(search_term, topcomments))
+            if search == True:
+                ticker_count = ticker_count + 1
 
-    print("'",search_term,"'", "was mentioned: ", ticker_count, " times \n")
-    ticker_total = ticker_total + ticker_count
-
+        print("'",search_term,"'", "was mentioned: ", ticker_count, " times \n")
+        ticker_total = ticker_total + ticker_count
+except:
+    print("!!ERROR!! Subreddit not found- Check for spelling erros and re-run")
+    exit()
 print("You searched for the word","'",search_term,"'; ", "it was mentioned a total of", ticker_total, "times in the current top", post_limit ,"r/",enter_sub, "post comments.")
