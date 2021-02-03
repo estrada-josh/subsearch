@@ -40,4 +40,4 @@ for submission in subreddit.hot(limit = post_limit):
     print("'",search_term,"'", "was mentioned: ", ticker_count, " times \n")
     ticker_total = ticker_total + ticker_count
 
-print(search_term, "was mentioned a total of", ticker_total, "times in the current top", post_limit ,"r/",enter_sub, "post comments.")
+print("You searched for the word","'",search_term,"'; ", "it was mentioned a total of", ticker_total, "times in the current top", post_limit ,"r/",enter_sub, "post comments.")
